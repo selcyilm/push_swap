@@ -8,6 +8,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <limits.h>
+#include "../libft/libft.h"
 
 typedef struct s_node
 {
@@ -17,14 +18,23 @@ typedef struct s_node
 }	t_node;
 
 // checker functions
-bool	check_non_numeric(char **str);
-bool	check_duplicate(char **str);
-void	error_display(char **av);
+bool	check_non_numeric(char **str, int start_pos);
+bool	check_string(char *str);
+bool	check_duplicate(char **str, int start_pos);
+void	error_display(t_node *a, char **av, int start_pos);
 
 //stact init functions
-t_node	*ft_lstlast(t_node *lst);
+t_node	*ft_lastnode(t_node *lst);
 t_node	*insert_at_tail(t_node *head, int data);
-t_node	*stack_init(t_node *head, char **av);
+t_node	*stack_init(t_node *head, char **av, int start_index);
 void	stack_free(t_node *head);
+
+// for debug and printing functions
+void	print_stack(t_node *stack);
+
+// handle argv
+t_node *parse_av_if_two(t_node *stack, char *av);
+t_node	*parse_av_if_more(t_node *stack, char**av);
+void	free_argv(char **av);
 
 #endif

@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   error.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: selcyilm <selcyilm@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/05/22 12:41:52 by selcyilm      #+#    #+#                 */
-/*   Updated: 2024/06/18 13:42:46 by selcyilm      ########   odam.nl         */
+/*   Created: 2024/06/18 12:57:36 by selcyilm      #+#    #+#                 */
+/*   Updated: 2024/06/18 13:38:28 by selcyilm      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	main(int ac, char **av)
+void	stack_free(t_node *stack)
 {
-	t_node	*a;
-	//t_node	*b;
-
-	a = NULL;
-	//b = NULL;
-
-	if (ac < 2)
+	t_node *tmp;
+	t_node *current;
+	
+	if (!stack)
+		return ;
+	current = stack;
+	while (current != NULL)
 	{
-		printf("Error\n");
-		exit(1);
+		tmp = current->next;
+		current->data = 0;
+		free(current);
+		current = tmp;
 	}
-	if (ac == 2)
-		a = parse_av_if_two(a, av[1]);
-	else
-		a = parse_av_if_more(a, av);
-	print_stack(a);
-	stack_free(a);
-	return (0);
+	stack = NULL;
 }
+
