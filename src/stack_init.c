@@ -6,7 +6,7 @@
 /*   By: selcyilm <selcyilm@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/05/22 13:47:55 by selcyilm      #+#    #+#                 */
-/*   Updated: 2024/05/22 13:47:56 by selcyilm      ########   odam.nl         */
+/*   Updated: 2024/06/18 11:50:19 by selcyilm      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,21 @@ t_node	*stack_init(t_node *head, char **av)
 		i++;
 	}
 	return (head);
+}
+
+void	stack_free(t_node *stack)
+{
+	t_node *tmp;
+	t_node *current;
+	
+	if (!stack)
+		return ;
+	current = stack;
+	while (current)
+	{
+		tmp = current->next;
+		free(current);
+		current = tmp->next;
+	}
+	stack = NULL;
 }

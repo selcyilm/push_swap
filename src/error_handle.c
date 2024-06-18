@@ -6,7 +6,7 @@
 /*   By: selcyilm <selcyilm@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/05/22 12:41:48 by selcyilm      #+#    #+#                 */
-/*   Updated: 2024/05/22 12:41:49 by selcyilm      ########   odam.nl         */
+/*   Updated: 2024/06/18 11:16:28 by selcyilm      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@ bool	check_non_numeric(char **str)
 	int	j;
 
 	i = 1;
+	
 	while (str[i])
 	{
 		j = 0;
 		while (str[i][j])
 		{
 			if (!isdigit(str[i][j]))
-				return (false);
+				if (str[i][j] != '-' && j != 0)
+					return (false);
 			j++;
 		}
 		i++;

@@ -25,6 +25,6 @@ void	error_display(char **av);
 t_node	*ft_lstlast(t_node *lst);
 t_node	*insert_at_tail(t_node *head, int data);
 t_node	*stack_init(t_node *head, char **av);
+void	stack_free(t_node *head);
 
 #endif
-
