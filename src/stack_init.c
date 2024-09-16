@@ -6,7 +6,7 @@
 /*   By: selcyilm <selcyilm@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/05/22 13:47:55 by selcyilm      #+#    #+#                 */
-/*   Updated: 2024/06/18 15:12:05 by selcyilm      ########   odam.nl         */
+/*   Updated: 2024/06/21 13:38:03 by selcyilm      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_node	*stack_init(t_node *head, char **av, int start_index)
 	i = start_index;
 	while (av[i])
 	{
-		head = insert_at_tail(head, atoi(av[i]));
+		head = insert_at_tail(head, ft_atoi(av[i]));
 		i++;
 	}
 	return (head);

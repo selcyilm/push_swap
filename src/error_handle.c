@@ -6,7 +6,7 @@
 /*   By: selcyilm <selcyilm@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/05/22 12:41:48 by selcyilm      #+#    #+#                 */
-/*   Updated: 2024/06/18 15:09:35 by selcyilm      ########   odam.nl         */
+/*   Updated: 2024/06/21 14:08:12 by selcyilm      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ bool	check_non_numeric(char **str, int start_pos)
 	int	i;
 
 	i = start_pos;
-	
 	while (str[i])
 	{
 		if (!check_string(str[i]))
@@ -34,7 +33,6 @@ bool	check_string(char *str)
 	i = 0;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
@@ -52,12 +50,12 @@ bool	check_duplicate_limit(char **str, int start_pos)
 	i = start_pos;
 	while (str[i])
 	{
-		if (atol(str[i]) < INT_MIN || atol(str[i]) > INT_MAX)
+		if (ft_atol(str[i]) < INT_MIN || ft_atol(str[i]) > INT_MAX)
 			return (false);
 		j = i + 1;
 		while (str[j])
 		{
-			if (atoi(str[j]) == atoi(str[i]))
+			if (ft_atoi(str[j]) == ft_atoi(str[i]))
 				return (false);
 			j++;
 		}
@@ -66,14 +64,33 @@ bool	check_duplicate_limit(char **str, int start_pos)
 	return (true);
 }
 
-void	error_display(t_node *a, char **av, int start_pos)
+void	error_display(t_node **a, char **av, int start_pos)
 {
-	if (!check_duplicate_limit(av, start_pos) || !check_non_numeric(av, start_pos))
+	if (!check_duplicate_limit(av, start_pos) \
+		|| !check_non_numeric(av, start_pos))
 	{
 		stack_free(a);
-		if (start_pos == 0)
+		if (start_pos == 1)
 			free_argv(av);
 		write(1, "Error\n", 6);
 		exit(1);
 	}
+}
+
+void	stack_free(t_node **stack)
+{
+	t_node	*tmp;
+	t_node	*current;
+
+	if (!*stack)
+		return ;
+	current = *stack;
+	while (current != NULL)
+	{
+		tmp = current->next;
+		current->data = 0;
+		free(current);
+		current = tmp;
+	}
+	*stack = NULL;
 }

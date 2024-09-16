@@ -14,7 +14,8 @@
 
 void	print_stack(t_node *stack)
 {
-	t_node *current;
+	t_node	*current;
+
 	if (!stack)
 		return ;
 	current = stack;
