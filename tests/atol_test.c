@@ -1,5 +1,5 @@
-#include criterion/criterion.h>
-#include "../src/ft_atol.c"  // Ensure the correct path to your function's source is provided
+#include <criterion/criterion.h>
+#include "../include/push_swap.h"
 
 // Test case 1: Basic positive number
 Test(ft_atol, basic_positive)
@@ -88,5 +88,3 @@ Test(ft_atol, underflow_number)
     long expected = -9223372036854775807 - 1;  // Depends on your implementation's behavior on underflow
     cr_assert_eq(ft_atol(input), expected, "Expected %ld but got %ld", expected, ft_atol(input));
 }
-
-<

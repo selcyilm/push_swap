@@ -9,7 +9,7 @@ static	void	rotate(t_node **stack)
 	int		len;
 
 	len = size_of_stack(*stack);
-	if (len == 1 || stack == NULL)
+	if (stack == NULL || *stack == NULL || len == 1)
 		return ;
 	last = ft_lastnode(*stack);
 	last->next = *stack;
