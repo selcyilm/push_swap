@@ -13,6 +13,7 @@
 typedef struct s_node
 {
 	int				data;
+	int				index;
 	struct s_node	*next;
 	struct s_node	*prev;
 }	t_node;
@@ -40,6 +41,10 @@ void	free_argv(char **av);
 //helper functions
 long	ft_atol(char *str);
 int		size_of_stack(t_node *stack);
+bool	is_stack_sorted(t_node **stack);
+t_node	*get_min(t_node *stack);
+t_node	*get_max(t_node *stack);
+void	fill_index(t_node *stack, int size);
 
 //alg
 void	sa(t_node *stack);
