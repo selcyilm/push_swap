@@ -41,7 +41,7 @@ Test(parse_arguments, test_parse_av_if_two_empty_input, .init = redirect_all_std
 // Test Case 3: Parsing multiple arguments with parse_av_if_more
 Test(parse_arguments, test_parse_av_if_more_valid_input, .init = redirect_all_std) {
     t_node *stack = NULL;
-    char *argv[] = {"5", "3", "7", "9", NULL};
+    char *argv[] = {"./push_swap", "5", "3", "7", "9", NULL};
 
     stack = parse_av_if_more(stack, argv);
 
@@ -72,7 +72,6 @@ Test(memory_management, test_free_argv_valid_input) {
     argv[2] = NULL;
 
     free_argv(argv);
-
     // Check that the memory has been freed (argv should be NULL after free)
     cr_assert_null(argv, "The argv pointer should be NULL after free_argv is called.");
 }

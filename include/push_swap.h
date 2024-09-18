@@ -45,11 +45,12 @@ bool	is_stack_sorted(t_node **stack);
 t_node	*get_min(t_node *stack);
 t_node	*get_max(t_node *stack);
 void	fill_index(t_node *stack, int size);
+int	get_pos(t_node *stack, int target);
 
-//alg
-void	sa(t_node *stack);
-void	sb(t_node *stack);
-void	ss(t_node *stack_a, t_node *stack_b);
+//operations
+void	sa(t_node **stack);
+void	sb(t_node **stack);
+void	ss(t_node **stack_a, t_node **stack_b);
 void	pa(t_node **dest, t_node **src);
 void	pb(t_node **dest, t_node **src);
 void	ra(t_node **a);
@@ -58,5 +59,12 @@ void	rr(t_node **a, t_node **b);
 void	rra(t_node **a);
 void	rrb(t_node **b);
 void	rrr(t_node **a, t_node **b);
+
+//alg
+void	sort_three(t_node **stack);
+void	sort_five(t_node **a, t_node **b, int size);
+void	sort_b(t_node **a, t_node **b, int size);
+void	sort_all(t_node **a, t_node **b, int size);
+void	radix_sort(t_node **a, t_node **b, int size);
 
 #endif

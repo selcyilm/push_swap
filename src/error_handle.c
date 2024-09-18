@@ -6,7 +6,7 @@
 /*   By: selcyilm <selcyilm@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/05/22 12:41:48 by selcyilm      #+#    #+#                 */
-/*   Updated: 2024/09/16 21:26:51 by selcyilm      ########   odam.nl         */
+/*   Updated: 2024/09/18 19:14:08by selcyilm      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ bool	check_string(char *str)
 	int	i;
 
 	i = 0;
-	if (str[i] == '-' || str[i] == '+')
+	if (!str || ft_strlen(str) == 0)
+		return (true);
+	if ((str[i] == '-' || str[i] == '+') && ft_strlen(str) != 1)
 		i++;
 	while (str[i])
 	{
@@ -69,9 +71,11 @@ void	error_display(t_node **a, char **av, int start_pos)
 	if (!check_duplicate_limit(av, start_pos) \
 		|| !check_non_numeric(av, start_pos))
 	{
-		stack_free(a);
-		if (start_pos == 1)
+		if (start_pos == 0)
+		{
+			stack_free(a);
 			free_argv(av);
+		}
 		write(1, "Error\n", 6);
 		exit(1);
 	}

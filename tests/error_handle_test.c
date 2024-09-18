@@ -20,7 +20,7 @@ Test(error_handle, valid_neg)
 
 Test(error_handle, valid_both)
 {
-	char	*input[] = {"+123", "+234", "+435", "000", "+122"};
+	char	*input[] = {"+123", "+234", "+435", "0", "+122"};
 	bool	result = check_non_numeric(input, 0);
 	cr_assert_eq(result, true, "Expected true but got false");
 }

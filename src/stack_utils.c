@@ -6,7 +6,7 @@
 /*   By: selcyilm <selcyilm@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/09/17 21:39:07 by selcyilm      #+#    #+#                 */
-/*   Updated: 2024/09/17 23:15:27 by selcyilm      ########   odam.nl         */
+/*   Updated: 2024/09/18 19:44:46 by selcyilm      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,16 @@ int	size_of_stack(t_node *node)
 
 bool	is_stack_sorted(t_node **stack)
 {
-	if (!*stack)
+	t_node	*current;
+
+	if (!*stack || !stack)
 		return (false);
-	while ((*stack)->next)
+	current = *stack;
+	while (current->next)
 	{
-		if ((*stack)->data > (*stack)->next->data)
+		if (current->data > current->next->data)
 			return (false);
-		*stack = (*stack)->next;
+		current = current->next;
 	}
 	return (true);
 }
@@ -90,4 +93,19 @@ void	fill_index(t_node *stack, int size)
 		tmp->index = size--;
 		tmp = next_max(stack, tmp->data);
 	}
+}
+
+int	get_pos(t_node *stack, int target)
+{
+	int	pos;
+
+	pos = 0;
+	while (stack)
+	{
+		if (stack->data == target)
+			return (pos);
+		pos++;
+		stack = stack->next;
+	}
+	return (-1);
 }
