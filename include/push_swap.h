@@ -45,7 +45,7 @@ bool	is_stack_sorted(t_node **stack);
 t_node	*get_min(t_node *stack);
 t_node	*get_max(t_node *stack);
 void	fill_index(t_node *stack, int size);
-int	get_pos(t_node *stack, int target);
+int		get_pos(t_node *stack, int target);
 
 //operations
 void	sa(t_node **stack);
@@ -62,9 +62,10 @@ void	rrr(t_node **a, t_node **b);
 
 //alg
 void	sort_three(t_node **stack);
-void	sort_five(t_node **a, t_node **b, int size);
-void	sort_b(t_node **a, t_node **b, int size);
-void	sort_all(t_node **a, t_node **b, int size);
-void	radix_sort(t_node **a, t_node **b, int size);
+void	sort_four(t_node **a, t_node **b);
+void	sort_five(t_node **a, t_node **b);
+void	push_all(t_node **src, t_node **dest);
+int		check_max_bits(t_node **head);
+void	radix_sort(t_node **a, t_node **b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: selcyilm <selcyilm@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/09/18 10:56:19 by selcyilm      #+#    #+#                 */
-/*   Updated: 2024/09/18 14:08:26 by selcyilm      ########   odam.nl         */
+/*   Updated: 2024/09/19 16:14:42 by selcyilm      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,113 +14,111 @@
 
 void	sort_three(t_node **stack)
 {
-	int	max;
+	t_node	*bigest_node;
 
-	max = get_max(*stack)->data;
-	if ((*stack)->data == max)
+	bigest_node = get_max(*stack);
+	if (bigest_node == *stack)
 		ra(stack);
-	else if ((*stack)->next->data == max)
+	else if ((*stack)->next == bigest_node)
 		rra(stack);
 	if ((*stack)->data > (*stack)->next->data)
 		sa(stack);
 }
 
-void	sort_five(t_node **a, t_node **b, int size)
+void	sort_four(t_node **a, t_node **b)
 {
-	int	min;
-	int	i;
-	int	pushed;
+	t_node	*min_node;
 
-	pushed = 0;
-	while (size > 3)
+	min_node = get_min(*a);
+	if ((*a)->next == min_node)
+		sa(a);
+	else if ((*a)->next->next == min_node)
 	{
-		min = get_min(*a)->data;
-		i = get_pos(*a, min);
-		if (i <= size-- / 2)
-			while ((*a)->data != min)
-				ra(a);
-		else
-			while ((*a)->data != min)
-				rra(a);
-		pb(b, a);
-		pushed++;
+		rra(a);
+		rra(a);
 	}
+	else if ((*a)->next->next->next == min_node)
+		rra(a);
+	pb(b, a);
 	sort_three(a);
-	while (pushed--)
-		pa(a, b);
-}
-
-void	sort_b(t_node **a, t_node **b, int size)
-{
-	int	max;
-	int	i;
-
-	while (size > 1)
-	{
-		max = get_max(*b)->data;
-		i = get_pos(*b, max);
-		if (i <= size-- / 2)
-			while ((*b)->data != max)
-				rb(b);
-		else
-			while ((*b)->data != max)
-				rrb(b);
-		pa(a, b);
-	}
 	pa(a, b);
 }
 
-void	sort_all(t_node **a, t_node **b, int size)
+void	sort_five(t_node **a, t_node **b)
 {
-	int	half;
-	int	b_size;
-	int	i;
+	t_node	*min_node;
 
-	fill_index(*a, size);
-	half = size / 2;
-	i = 0;
-	if (size % 2)
-		i = 1;
-	while (size > half)
+	min_node = get_min(*a);
+	if ((*a)->next == min_node)
+		sa(a);
+	else if ((*a)->next->next == min_node)
 	{
-		if ((*a)->index > half + i)
-			ra(a);
-		else
-		{
-			pb(b, a);
-			size--;
-		}
+		ra(a);
+		ra(a);
 	}
-	b_size = size_of_stack(*b);
-	sort_five(a, b, size);
-	sort_b(a, b, b_size);
+	else if ((*a)->next->next->next == min_node)
+	{
+		rra(a);
+		rra(a);
+	}
+	else if ((*a)->next->next->next->next == min_node)
+		rra(a);
+	pb(b, a);
+	sort_four(a, b);
+	pa(a, b);
 }
 
-void	radix_sort(t_node **a, t_node **b, int size)
+int	check_max_bits(t_node **head)
 {
-	int	i;
-	int	j;
-	int	size_b;
-	int	max_bit;
+	t_node	*a;
+	int		max_bits;
+	size_t	tmp_index;
 
-	i = 0;
-	max_bit = 0;
-	fill_index(*a, size);
-	while ((size >> max_bit) != 0)
-		max_bit++;
-	while (max_bit > 1)
+	a = get_max(*head);
+	max_bits = 0;
+	tmp_index = a->index;
+	while (tmp_index != 0)
 	{
-		j = 0;
-		while (j++ < size)
+		tmp_index = tmp_index >> 1;
+		max_bits++;
+	}
+	return (max_bits);
+}
+
+void	push_all(t_node **src, t_node **dest)
+{
+	int	src_len;
+
+	src_len = size_of_stack(*src);
+	while (src_len--)
+	{
+		pa(dest, src);
+	}
+}
+
+void	radix_sort(t_node **a, t_node **b)
+{
+	int	max_bits;
+	int	current_bit;
+	int	current_element;
+	int	a_len;
+
+	current_bit = 0;
+	current_element = 0;
+	a_len = size_of_stack(*a);
+	max_bits = check_max_bits(a);
+	while (current_bit < max_bits)
+	{
+		while (current_element < a_len)
 		{
-			if ((*a)->index >> i & 1)
-				ra(a);
-			else
+			if (!(((*a)->index) >> current_bit & 1))
 				pb(b, a);
+			else
+				ra(a);
+			current_element++;
 		}
-		size_b = size_of_stack(*b);
-		while (size_b--)
-			pa(a, b);
-		i++;
+		current_element = 0;
+		push_all(b, a);
+		current_bit++;
 	}
 }

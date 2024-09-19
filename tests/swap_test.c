@@ -29,7 +29,7 @@ Test(stack_operations, test_sa_swap) {
     stack_a->next = create_node(2);
     stack_a->next->prev = stack_a;
 
-    sa(stack_a);
+    sa(&stack_a);
 
     cr_expect_eq(stack_a->data, 2, "After sa, top of stack_a should be 2.");
     cr_expect_eq(stack_a->next->data, 1, "After sa, second element of stack_a should be 1.");
@@ -43,7 +43,7 @@ Test(stack_operations, test_sb_swap) {
     stack_b->next = create_node(6);
     stack_b->next->prev = stack_b;
 
-    sb(stack_b);
+    sb(&stack_b);
 
     cr_expect_eq(stack_b->data, 6, "After sb, top of stack_b should be 6.");
     cr_expect_eq(stack_b->next->data, 5, "After sb, second element of stack_b should be 5.");
@@ -55,7 +55,7 @@ Test(stack_operations, test_sb_swap) {
 Test(stack_operations, test_sa_single_element) {
     t_node *stack_a = create_node(10);
 
-    sa(stack_a);
+    sa(&stack_a);
 
     cr_expect_eq(stack_a->data, 10, "After sa, top of stack_a should still be 10 (unchanged).");
 
@@ -66,7 +66,7 @@ Test(stack_operations, test_sa_single_element) {
 Test(stack_operations, test_sb_single_element) {
     t_node *stack_b = create_node(8);
 
-    sb(stack_b);
+    sb(&stack_b);
 
     cr_expect_eq(stack_b->data, 8, "After sb, top of stack_b should still be 8 (unchanged).");
 
@@ -77,7 +77,7 @@ Test(stack_operations, test_sb_single_element) {
 Test(stack_operations, test_sa_empty_stack) {
     t_node *stack_a = NULL;
 
-    sa(stack_a);
+    sa(&stack_a);
 
     cr_assert_null(stack_a, "After sa on an empty stack, stack_a should remain NULL.");
 }
@@ -86,7 +86,7 @@ Test(stack_operations, test_sa_empty_stack) {
 Test(stack_operations, test_sb_empty_stack) {
     t_node *stack_b = NULL;
 
-    sb(stack_b);
+    sb(&stack_b);
 
     cr_assert_null(stack_b, "After sb on an empty stack, stack_b should remain NULL.");
 }
@@ -101,7 +101,7 @@ Test(stack_operations, test_ss_swap_both_stacks) {
     stack_b->next = create_node(9);
     stack_b->next->prev = stack_b;
 
-    ss(stack_a, stack_b);
+    ss(&stack_a, &stack_b);
 
     cr_expect_eq(stack_a->data, 4, "After ss, top of stack_a should be 4.");
     cr_expect_eq(stack_a->next->data, 3, "After ss, second element of stack_a should be 3.");
@@ -120,7 +120,7 @@ Test(stack_operations, test_ss_one_empty_stack) {
     stack_b->next = create_node(12);
     stack_b->next->prev = stack_b;
 
-    ss(stack_a, stack_b);
+    ss(&stack_a, &stack_b);
 
     cr_assert_null(stack_a, "After ss, stack_a should remain NULL.");
     cr_expect_eq(stack_b->data, 12, "After ss, top of stack_b should be 12.");
@@ -134,7 +134,7 @@ Test(stack_operations, test_ss_both_empty_stacks) {
     t_node *stack_a = NULL;
     t_node *stack_b = NULL;
 
-    ss(stack_a, stack_b);
+    ss(&stack_a, &stack_b);
 
     cr_assert_null(stack_a, "After ss on both empty stacks, stack_a should remain NULL.");
     cr_assert_null(stack_b, "After ss on both empty stacks, stack_b should remain NULL.");

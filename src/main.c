@@ -6,7 +6,7 @@
 /*   By: selcyilm <selcyilm@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/05/22 12:41:52 by selcyilm      #+#    #+#                 */
-/*   Updated: 2024/09/18 19:45:44 by selcyilm      ########   odam.nl         */
+/*   Updated: 2024/09/19 16:09:41 by selcyilm      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void	push_swap(t_node **a, t_node **b)
 		sa(a);
 	else if (size == 3)
 		sort_three(a);
-	else if (size <= 9)
-		sort_five(a, b, size);
-	else if (size <= 150)
-		sort_all(a, b, size);
-	else if (size > 150)
-		radix_sort(a, b, size);
+	else if (size == 4)
+		sort_four(a, b);
+	else if (size == 5)
+		sort_five(a, b);
+	else
+		radix_sort(a, b);
 }
 
 int	main(int ac, char **av)
@@ -46,14 +46,14 @@ int	main(int ac, char **av)
 		a = parse_av_if_two(a, av[1]);
 	else
 		a = parse_av_if_more(a, av);
-	/*printf("-------------A Before----------\n");
-	print_stack(a);*/
 
+	fill_index(a, size_of_stack(a));
+	//print_stack(a);
 	if (!is_stack_sorted(&a))
 		push_swap(&a, &b);
-	/*printf("-------------A----------\n");
+	/*printf("---------------After-A---------\n");
 	print_stack(a);
-	printf("-------------B----------\n");
+	printf("---------------After-B---------\n");
 	print_stack(b);*/
 	stack_free(&a);
 	stack_free(&b);

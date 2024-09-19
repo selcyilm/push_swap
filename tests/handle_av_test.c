@@ -73,7 +73,7 @@ Test(memory_management, test_free_argv_valid_input) {
 
     free_argv(argv);
     // Check that the memory has been freed (argv should be NULL after free)
-    cr_assert_null(argv, "The argv pointer should be NULL after free_argv is called.");
+    cr_assert_eq(argv, NULL, "The argv pointer should be NULL after free_argv is called.");
 }
 
 // Test Case 6: Freeing NULL with free_argv (should do nothing)

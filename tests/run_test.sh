@@ -97,6 +97,39 @@ elif [ "$COMMAND" == "handle_av" ]; then
     else
         echo "Compilation failed."
     fi
+ elif [ "$COMMAND" == "three" ]; then
+    echo "Compiling and running sort three tests..."
+
+    $CC $OUTPUT $CRI sort_three_test.c $HELPER $ALL_SRC_FILES $PUSH_SWAP_HEADER $LIBFT 
+
+    if [ $? -eq 0 ]; then
+        echo "Compilation successful, running tests..."
+       ./$OUTPUT
+    else
+        echo "Compilation failed."
+    fi
+ elif [ "$COMMAND" == "four" ]; then
+    echo "Compiling and running sort four tests..."
+
+    $CC $OUTPUT $CRI sort_four_test.c $HELPER $ALL_SRC_FILES $PUSH_SWAP_HEADER $LIBFT 
+
+    if [ $? -eq 0 ]; then
+        echo "Compilation successful, running tests..."
+       ./$OUTPUT
+    else
+        echo "Compilation failed."
+    fi
+ elif [ "$COMMAND" == "five" ]; then
+    echo "Compiling and running sort four tests..."
+
+    $CC $OUTPUT $CRI sort_five_test.c $HELPER $ALL_SRC_FILES $PUSH_SWAP_HEADER $LIBFT 
+
+    if [ $? -eq 0 ]; then
+        echo "Compilation successful, running tests..."
+       ./$OUTPUT
+    else
+        echo "Compilation failed."
+    fi
 elif [ "$COMMAND" == "all" ]; then
     echo "Compiling and running all tests..."
 
