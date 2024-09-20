@@ -6,7 +6,7 @@
 /*   By: selcyilm <selcyilm@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/09/20 15:37:52 by selcyilm      #+#    #+#                 */
-/*   Updated: 2024/09/20 15:37:54 by selcyilm      ########   odam.nl         */
+/*   Updated: 2024/09/20 15:48:11 by selcyilm      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	error_display(t_node **a, char **av, int start_pos)
 			stack_free(a);
 			free_argv(av);
 		}
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
 		exit(1);
 	}
 }

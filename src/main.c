@@ -6,7 +6,7 @@
 /*   By: selcyilm <selcyilm@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/05/22 12:41:52 by selcyilm      #+#    #+#                 */
-/*   Updated: 2024/09/20 15:33:00 by selcyilm      ########   odam.nl         */
+/*   Updated: 2024/09/20 15:48:40 by selcyilm      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int ac, char **av)
 	b = NULL;
 	if (ac < 2)
 	{
-		printf("Error\n");
+		write(2, "Error\n", 6);
 		exit(1);
 	}
 	if (ac == 2)
