@@ -6,7 +6,7 @@
 /*   By: selcyilm <selcyilm@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/06/18 13:00:07 by selcyilm      #+#    #+#                 */
-/*   Updated: 2024/09/17 22:59:53 by selcyilm      ########   odam.nl         */
+/*   Updated: 2024/09/20 15:36:49 by selcyilm      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_stack(t_node *stack)
 	current = stack;
 	while (current)
 	{
-		printf("Index: %d\tData: %d\n", current->index ,current->data);
+		printf("Index: %d\tData: %d\n", current->index, current->data);
 		current = current->next;
 	}
 }

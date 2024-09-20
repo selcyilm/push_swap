@@ -6,7 +6,7 @@
 /*   By: selcyilm <selcyilm@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/05/22 12:41:52 by selcyilm      #+#    #+#                 */
-/*   Updated: 2024/09/19 18:51:37 by selcyilm      ########   odam.nl         */
+/*   Updated: 2024/09/20 15:33:00 by selcyilm      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	main(int ac, char **av)
 
 	a = NULL;
 	b = NULL;
-
 	if (ac < 2)
 	{
 		printf("Error\n");
@@ -46,7 +45,6 @@ int	main(int ac, char **av)
 		a = parse_av_if_two(a, av[1]);
 	else
 		a = parse_av_if_more(a, av);
-
 	fill_index(a, size_of_stack(a));
 	if (!is_stack_sorted(&a))
 		push_swap(&a, &b);
