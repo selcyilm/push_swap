@@ -6,7 +6,7 @@
 /*   By: selcyilm <selcyilm@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/09/20 15:37:52 by selcyilm      #+#    #+#                 */
-/*   Updated: 2024/09/20 15:48:11 by selcyilm      ########   odam.nl         */
+/*   Updated: 2024/09/20 16:39:50 by selcyilm      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,20 +81,19 @@ void	error_display(t_node **a, char **av, int start_pos)
 	}
 }
 
-void	stack_free(t_node **stack)
+bool	check_space(char *av)
 {
-	t_node	*tmp;
-	t_node	*current;
+	int		i;
+	bool	flag;
 
-	if (!*stack)
-		return ;
-	current = *stack;
-	while (current != NULL)
+	flag = true;
+	i = 0;
+	if (!av)
+		return (false);
+	while (av[i] == ' ')
 	{
-		tmp = current->next;
-		current->data = 0;
-		free(current);
-		current = tmp;
+		flag = false;
+		i++;
 	}
-	*stack = NULL;
+	return (flag);
 }

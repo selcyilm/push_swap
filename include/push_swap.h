@@ -1,5 +1,17 @@
-#ifndef PUSH_SWAP
-# define PUSH_SWAP
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   push_swap.h                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: selcyilm <selcyilm@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2024/09/20 16:43:11 by selcyilm      #+#    #+#                 */
+/*   Updated: 2024/09/20 16:44:13 by selcyilm      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <unistd.h>
 # include <stdio.h>
@@ -23,6 +35,7 @@ bool	check_non_numeric(char **str, int start_pos);
 bool	check_string(char *str);
 bool	check_duplicate_limit(char **str, int start_pos);
 void	error_display(t_node **a, char **av, int start_pos);
+bool	check_space(char *av);
 
 //stact init functions
 t_node	*ft_lastnode(t_node *lst);

@@ -6,7 +6,7 @@
 /*   By: selcyilm <selcyilm@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/05/22 12:41:52 by selcyilm      #+#    #+#                 */
-/*   Updated: 2024/09/20 15:48:40 by selcyilm      ########   odam.nl         */
+/*   Updated: 2024/09/20 16:38:43 by selcyilm      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,11 @@ int	main(int ac, char **av)
 		exit(1);
 	}
 	if (ac == 2)
+	{
+		if (!check_space(av[1]) || ft_strlen(av[1]) == 0)
+			return (0);
 		a = parse_av_if_two(a, av[1]);
+	}
 	else
 		a = parse_av_if_more(a, av);
 	fill_index(a, size_of_stack(a));
