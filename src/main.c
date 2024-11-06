@@ -37,10 +37,7 @@ int	main(int ac, char **av)
 	a = NULL;
 	b = NULL;
 	if (ac < 2)
-	{
-		write(2, "Error\n", 6);
 		exit(1);
-	}
 	if (ac == 2)
 	{
 		if (!check_space(av[1]) || ft_strlen(av[1]) == 0)

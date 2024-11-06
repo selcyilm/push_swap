@@ -14,23 +14,38 @@ NAME = push_swap
 
 SRCS = $(wildcard src/*.c)
 OBJS = $(SRCS:.c=.o)
+LIBFT = libft/libft.a
 
-CC = gcc -Wall -Werror -Wextra -g
+CC = cc -Wall -Werror -Wextra
 
 RM = rm -rf
 
-all: $(NAME)
+COLOUR_GREEN=\033[35m
+COLOUR_BLUE=\033[0;36m
+COLOUR_END=\033[0m
+COLOUR_ORANGE=\033[38;5;214m
 
-$(NAME): $(OBJS)
-	$(MAKE) -C ./libft
-	$(CC) $(OBJS) ./libft/libft.a -o $(NAME)
+all: $(NAME) $(LIBFT)
+
+$(NAME): $(LIBFT) $(OBJS)
+	@$(CC) $(OBJS) $(LIBFT) -o $(NAME)
+	@echo "$(COLOUR_ORANGE)PUSH_SWAP IS READY TO GO$(COLOUR_END)"
+
+$(LIBFT):
+	@make -s -C libft/ all
+%.o: %.c
+	@$(CC) -c $< -o $@
+	@echo "$(COLOUR_GREEN)CREATING $@$(COLOUR_END)"
 
 clean:
-	$(MAKE) -C ./libft fclean
-	$(RM) $(OBJS)
+	@make -s -C libft/ clean
+	@$(RM) $(OBJS)
+	@echo "$(COLOUR_BLUE)CLEARING OBJECT FILES FOR PUSH_SWAP$(COLOUR_END)"
 
 fclean: clean
-	$(RM) $(NAME)
+	@make -s -C libft/ fclean
+	@$(RM) $(NAME)
+	@echo "$(COLOUR_BLUE)CLEARING EXECUTABLE FOR PUSH_SWAP...$(COLOUR_END)"
 
 re: fclean all
 
