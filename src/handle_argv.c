@@ -19,7 +19,7 @@ void	printf_av(char **str)
 	i = 0;
 	while (str[i] != 0)
 	{
-		printf("str[%d]=|%s|\n", i, str[i]);
+		ft_printf("str[%d]=|%s|\n", i, str[i]);
 		i++;
 	}
 }

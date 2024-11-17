@@ -33,18 +33,18 @@ static	void	reverse_rotate(t_node **stack)
 void	rra(t_node **a)
 {
 	reverse_rotate(a);
-	ft_putstr_fd("rra\n", 1);
+	ft_printf("rra\n");
 }
 
 void	rrb(t_node **b)
 {
 	reverse_rotate(b);
-	ft_putstr_fd("rrb\n", 1);
+	ft_printf("rrb\n");
 }
 
 void	rrr(t_node **a, t_node **b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-	ft_putstr_fd("rrr\n", 1);
+	ft_printf("rrr\n");
 }

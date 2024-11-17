@@ -12,10 +12,23 @@
 
 NAME = push_swap
 
-SRCS = $(wildcard src/*.c)
+SRCS = ./src/debug.c \
+		./src/error_handle.c \
+		./src/fill_index.c \
+		./src/handle_argv.c \
+		./src/push.c \
+		./src/radix.c \
+		./src/reverse_rotate.c \
+		./src/rotate.c \
+		./src/sort_alg.c \
+		./src/stack_free.c \
+		./src/stack_init.c \
+		./src/stack_utils.c \
+		./src/swap.c \
+		./src/main.c \
+
 OBJS = $(SRCS:.c=.o)
 LIBFT = libft/libft.a
-
 CC = cc -Wall -Werror -Wextra
 
 RM = rm -rf
@@ -33,6 +46,7 @@ $(NAME): $(LIBFT) $(OBJS)
 
 $(LIBFT):
 	@make -s -C libft/ all
+
 %.o: %.c
 	@$(CC) -c $< -o $@
 	@echo "$(COLOUR_GREEN)CREATING $@$(COLOUR_END)"

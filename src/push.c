@@ -37,7 +37,7 @@ void	pa(t_node **dest, t_node **src)
 		node_to_push->next->prev = node_to_push;
 		*dest = node_to_push;
 	}
-	ft_putstr_fd("pa\n", 1);
+	ft_printf("pa\n");
 }
 
 void	pb(t_node **dest, t_node **src)
@@ -61,5 +61,5 @@ void	pb(t_node **dest, t_node **src)
 		node_to_push->next->prev = node_to_push;
 		*dest = node_to_push;
 	}
-	ft_putstr_fd("pb\n", 1);
+	ft_printf("pb\n");
 }

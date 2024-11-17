@@ -21,6 +21,8 @@
 # include <stdlib.h>
 # include <limits.h>
 # include "../libft/libft.h"
+# include "../libft/ft_printf/ft_printf.h"
+# include "../libft/ft_printf_fd/ft_printf_fd.h"
 
 typedef struct s_node
 {
@@ -52,7 +54,6 @@ t_node	*parse_av_if_more(t_node *stack, char**av);
 void	free_argv(char **av);
 
 //helper functions
-long	ft_atol(char *str);
 int		size_of_stack(t_node *stack);
 bool	is_stack_sorted(t_node **stack);
 t_node	*get_min(t_node *stack);

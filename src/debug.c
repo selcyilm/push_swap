@@ -21,7 +21,7 @@ void	print_stack(t_node *stack)
 	current = stack;
 	while (current)
 	{
-		printf("Index: %d\tData: %d\n", current->index, current->data);
+		ft_printf("Index: %d\tData: %d\n", current->index, current->data);
 		current = current->next;
 	}
 }
