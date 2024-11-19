@@ -22,7 +22,6 @@
 # include <limits.h>
 # include "../libft/libft.h"
 # include "../libft/ft_printf/ft_printf.h"
-# include "../libft/ft_printf_fd/ft_printf_fd.h"
 
 typedef struct s_node
 {
@@ -44,9 +43,6 @@ t_node	*ft_lastnode(t_node *lst);
 t_node	*insert_at_tail(t_node *head, int data);
 t_node	*stack_init(t_node *head, char **av, int start_index);
 void	stack_free(t_node **head);
-
-// for debug and printing functions
-void	print_stack(t_node *stack);
 
 // handle argv
 t_node	*parse_av_if_two(t_node *stack, char *av);

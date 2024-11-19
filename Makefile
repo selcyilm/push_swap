@@ -12,8 +12,7 @@
 
 NAME = push_swap
 
-SRCS = ./src/debug.c \
-		./src/error_handle.c \
+SRCS =	./src/error_handle.c \
 		./src/fill_index.c \
 		./src/handle_argv.c \
 		./src/push.c \

@@ -12,18 +12,6 @@
 
 #include "../include/push_swap.h"
 
-void	printf_av(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != 0)
-	{
-		ft_printf("str[%d]=|%s|\n", i, str[i]);
-		i++;
-	}
-}
-
 t_node	*parse_av_if_two(t_node *stack, char *av)
 {
 	char	**tmp;

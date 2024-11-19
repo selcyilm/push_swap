@@ -38,7 +38,7 @@ int	main(int ac, char **av)
 	b = NULL;
 	if (ac < 2)
 	{
-		ft_printf_fd(2, "Error\n");
+		ft_putstr_fd("Error\n", 2);
 		exit(1);
 	}
 	if (ac == 2)

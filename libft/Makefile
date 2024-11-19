@@ -79,14 +79,6 @@ PRINTF	=	ft_printf/ft_printf.o\
 			ft_printf/print_str.o\
 			ft_printf/print_unsigned.o
 
-PRINTF_FD =	./ft_printf_fd/ft_printf_fd.o\
-			./ft_printf_fd/ft_strlen_fd.o\
-			./ft_printf_fd/print_digit_fd.o\
-			./ft_printf_fd/print_hex_fd.o\
-			./ft_printf_fd/print_ptr_fd.o\
-			./ft_printf_fd/print_str_fd.o\
-			./ft_printf_fd/print_unsigned_fd.o
-
 COLOUR_GREEN=\033[35m
 COLOUR_BLUE=\033[0;36m
 COLOUR_END=\033[0m
@@ -98,15 +90,12 @@ else
 	OBJ_SWITCH = $(OBJS)
 endif
 
-$(NAME)		:	$(PRINTF) $(OBJ_SWITCH) $(PRINTF_FD)
+$(NAME)		:	$(PRINTF) $(OBJ_SWITCH)
 			@$(LIB) $@ $^
 			@echo "$(COLOUR_ORANGE)LIBFT.A IS READY TO GO$(COLOUR_END)"
 
 $(PRINTF)	:
 			@make -s -C ./ft_printf
-
-$(PRINTF_FD):
-			@make -s -C ./ft_printf_fd
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
@@ -117,13 +106,11 @@ all			:	bonus $(NAME)
 clean		:
 			@$(RM) $(OBJS) $(OBJS_BONUS)
 			@make -s clean -C ./ft_printf
-			@make -s clean -C ./ft_printf_fd
 			@echo "$(COLOUR_BLUE)CLEARING OBJECT FILES FOR LIBFT$(COLOUR_END)"
 
 fclean		:	clean
 			@$(RM) $(NAME)
 			@make -s fclean -C ./ft_printf
-			@make -s fclean -C ./ft_printf_fd
 			@echo "$(COLOUR_BLUE)CLEANING EXECUTABLE FOR LIBFT...$(COLOUR_END)"
 
 re		:	fclean all

@@ -76,7 +76,7 @@ void	error_display(t_node **a, char **av, int start_pos)
 			stack_free(a);
 			free_argv(av);
 		}
-		write(2, "Error\n", 6);
+		ft_putstr_fd("Error\n", 2);
 		exit(1);
 	}
 }
